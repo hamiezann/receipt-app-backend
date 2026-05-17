@@ -15,7 +15,16 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>();
 
 app.use(prettyJSON());
-app.use('*', cors());
+// app.use('*', cors());
+app.use(
+	'*',
+	cors({
+		origin: ['https://968115be.x3ra.pages.dev', 'http://localhost:5173'],
+		allowHeaders: ['Content-Type', 'Authorization'],
+		allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+		credentials: true,
+	}),
+);
 app.get('/', (c) => c.text('Xann Receipt App | 2026'));
 
 // protect all routes 'api' with jwt

@@ -8,12 +8,29 @@
 	"main": "src/index.ts",
 	"compatibility_date": "2026-05-01",
 	"observability": {
-		"enabled": true
+		"enabled": true,
 	},
 	"upload_source_maps": true,
-	"compatibility_flags": [
-		"nodejs_compat"
-	]
+	"compatibility_flags": ["nodejs_compat"],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "xreceipt-app",
+			"database_id": "651856cd-e360-429a-ab43-b7cca1e15141",
+		},
+	],
+	"r2_buckets": [
+		{
+			"binding": "R2",
+			"bucket_name": "xreceipt-app-storage",
+		},
+	],
+	"vars": {
+		"R2_PUBLIC_URL": "https://assets.xcorporation.uk",
+	},
+	"ai": {
+		"binding": "AI",
+	},
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
@@ -31,7 +48,15 @@
 	 * Note: Use secrets to store sensitive data.
 	 * https://developers.cloudflare.com/workers/configuration/secrets/
 	 */
-	// "vars": {  "MY_VARIABLE": "production_value" }
+	// "vars": {
+	// 	"JWT_SECRET": "hehe_my_jwt_token_1234567890"
+	// },
+	"kv_namespaces": [
+		{
+			"binding": "xreceipt_app",
+			"id": "dd6006e1854743db89e19c9cc8bf7cae",
+		},
+	],
 	/**
 	 * Static Assets
 	 * https://developers.cloudflare.com/workers/static-assets/binding/
