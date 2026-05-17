@@ -36,10 +36,13 @@
 
 		/* Skip type checking all .d.ts files. */
 		"skipLibCheck": true,
-		"types": [
-			"./worker-configuration.d.ts",
-			"node"
-		]
+		"types": ["./worker-configuration.d.ts", "node"],
+		"baseUrl": ".",
+		"paths": {
+			"utils": ["src/services/util-services.ts"],
+			"auth": ["src/services/auth-services.ts"],
+			"dtos": ["src/dtos"]
+		}
 	},
 	"exclude": ["test"],
 	"include": ["worker-configuration.d.ts", "src/**/*.ts"]

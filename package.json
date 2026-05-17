@@ -1,19 +1,27 @@
 {
-  "name": "xann-receipt-app",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "test": "vitest",
-    "cf-typegen": "wrangler types"
-  },
-  "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.12.4",
-    "@types/node": "^25.6.0",
-    "typescript": "^5.5.2",
-    "vitest": "~3.2.0",
-    "wrangler": "^4.87.0"
-  }
+	"name": "xann-receipt-app",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"cf-typegen": "wrangler types",
+		"db-schema-local": "wrangler d1 execute xreceipt-app --local --file=./database_schema.sql",
+		"db-schema-prod": "wrangler d1 execute xreceipt-app --remote --file=./database_schema.sql",
+		"debug:backend": "code --workspace . && node -e \"setTimeout(() => require('child_process').exec('code --launch \"Backend: Hono.js\"'), 1000)\""
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.12.4",
+		"@types/node": "^25.6.0",
+		"typescript": "^5.5.2",
+		"vitest": "~3.2.0",
+		"wrangler": "^4.87.0"
+	},
+	"dependencies": {
+		"@hono/zod-validator": "^0.7.6",
+		"hono": "4.12.16",
+		"zod": "^4.4.2"
+	}
 }

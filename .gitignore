@@ -165,3 +165,6 @@ dist
 .env*
 !.env.example
 .wrangler/
+
+database_schema.sql
+command_list.txt
